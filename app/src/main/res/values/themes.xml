@@ -13,4 +13,42 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.NoActionBar_white" parent="@style/Theme.MaterialComponents.Light.Bridge">
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="AppTheme.ContinueButton_White" parent="@style/Theme.NoActionBar_white">
+
+        <item name="android:lineSpacingMultiplier">1.29</item>
+        <item name="android:textSize">@dimen/dimen_18</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:background">@drawable/continue_button_solid_white</item>
+    </style>
+    <style name="edittext_outline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxStrokeWidth">@dimen/dimen_1</item>
+        <item name="boxStrokeWidthFocused">@dimen/dimen_2</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dimen_4</item>
+
+    </style>
+
+
+    <style name="edittext_outline_white" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeWidth">@dimen/dimen_1</item>
+        <item name="boxStrokeWidthFocused">@dimen/dimen_2</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimen_4</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dimen_4</item>
+
+    </style>
 </resources>

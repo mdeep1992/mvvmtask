@@ -1,18 +1,15 @@
 package com.example.mvvmtask.ViewModel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
 import com.example.mvvmtask.Interface.ApiServices;
-import com.example.mvvmtask.Interface.ErrorParser;
 import com.example.mvvmtask.Model.list.ListModel;
 import com.example.mvvmtask.Utils;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,17 +47,18 @@ public class ListViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<ListModel> call, Response<ListModel> response) {
                 if(response.isSuccessful()){
+                    Log.e("response",response.body().toString() );
                     userList.setValue(response.body());
                 }else{
-                    String errorMsg=  new ErrorParser(response.errorBody()).getMessage();
-                    ErrorMsg.setValue(errorMsg);
+//                    String errorMsg=  new ErrorParser(response.errorBody()).getMessage();
+//                    ErrorMsg.setValue(errorMsg);
                 }
 
             }
 
             @Override
             public void onFailure(Call<ListModel> call, Throwable t) {
-                ErrorMsg.setValue("Unknown Error");
+//                ErrorMsg.setValue("Unknown Error");
             }
         });
     }

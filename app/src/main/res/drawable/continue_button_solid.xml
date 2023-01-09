@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:drawable="@drawable/boarding_started_button_solid_on_primary" />-->
+    <item android:drawable="@drawable/primary_botton" />
+</selector>

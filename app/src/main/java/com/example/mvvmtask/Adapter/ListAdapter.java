@@ -35,7 +35,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.viewholder holder, int position) {
-        holder.id.setText(list.get(position).getId());
+        holder.id.setText(String.valueOf(list.get(position).getId()));
         holder.mail.setText(list.get(position).getEmail());
         holder.first_name.setText(list.get(position).getFirstName());
         holder.last_name.setText(list.get(position).getLastName());
