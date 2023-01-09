@@ -1,6 +1,7 @@
 package com.example.mvvmtask.ViewModel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.mvvmtask.Interface.ApiServices;
 import com.example.mvvmtask.Model.RegisterModel;
+import com.example.mvvmtask.Model.list.ListModel;
 import com.example.mvvmtask.Utils;
 import com.google.gson.JsonObject;
 
@@ -21,9 +23,19 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterViewModel extends AndroidViewModel {
-private MutableLiveData<RegisterModel>register= new MutableLiveData<>();
+private MutableLiveData<RegisterModel>register=new MutableLiveData<>();
     public RegisterViewModel(@NonNull Application application) {
         super(application);
+
+//        public LiveData<RegisterModel> doRegister() {
+//            if (register == null) {
+//                register = new MutableLiveData<RegisterModel>();
+//
+//                doregisterApi(JsonObject jsonObject);
+//            }
+//
+//            return register;
+//        }
 
     }
 
@@ -38,14 +50,16 @@ private MutableLiveData<RegisterModel>register= new MutableLiveData<>();
             @Override
             public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
                 if (response.isSuccessful()) {
+                    Log.e("token", response.body().getToken() );
                     register.setValue(response.body());
                 }else{
-
+register.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(Call<RegisterModel> call, Throwable t) {
+                Log.e("tokenfailure", t.getLocalizedMessage() );
 
             }
         });

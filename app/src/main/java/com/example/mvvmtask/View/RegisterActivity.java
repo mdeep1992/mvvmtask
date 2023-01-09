@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.mvvmtask.Model.RegisterModel;
 import com.example.mvvmtask.R;
 import com.example.mvvmtask.Utils;
 import com.example.mvvmtask.ViewModel.ListViewModel;
@@ -46,10 +47,20 @@ CheckBox policy;
         }else if((!Utils.isValidPassword(ed_password.getText().toString().trim()))){
             tx_email.setHelperText("");
             tx_password.setHelperText("password must have six digits and contains atleast one number and one special character");
-        }else {
-            ed_confirmpass.getText().toString();
+        }else if (!ed_confirmpass.getText().toString().equals(ed_password.getText().toString().trim())){
             tx_password.setHelperText("");
             tx_confirmpass.setHelperText("password must be same");
+        }else if (!policy.isChecked()){
+            tx_confirmpass.setHelperText("");
+            Toast.makeText(this, "please select the privacy policy", Toast.LENGTH_SHORT).show();
+
+        }else{
+            RegisterViewModel model = new ViewModelProvider(this).get(RegisterViewModel.class);
+            Log.e("taggggggggg", "response" );
+            JsonObject jsonObject=new JsonObject();
+            jsonObject.addProperty("email",ed_email.getText().toString());
+            jsonObject.addProperty("password",ed_password.getText().toString());
+            model.doregisterApi(jsonObject);
         }
     }
 
