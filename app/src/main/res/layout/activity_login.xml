@@ -56,7 +56,6 @@
                     android:layout_height="@dimen/dimen_50"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
-                    android:maxLength="10"
                     android:textCursorDrawable="@drawable/bg_edittext_cursor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -94,10 +93,23 @@
                 android:layout_height="@dimen/dimen_50"
                 android:layout_marginTop="@dimen/dimen_20"
                 android:layout_marginEnd="@dimen/dimen_20"
-                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:enabled="true"
                 android:minWidth="160.0dip"
                 android:text="@string/login"
+                android:backgroundTint="@color/primary"
+                android:textAllCaps="false" />
+            <Button
+
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:enabled="true"
+                android:minWidth="160.0dip"
+                android:text="@string/register"
                 android:backgroundTint="@color/primary"
                 android:textAllCaps="false" />
 

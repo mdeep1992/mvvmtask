@@ -1,11 +1,11 @@
-package com.example.mvvmtask.Interface
+package com.example.mvvmtask
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.ResponseBody
 
 
-class ErrorParser (private val errorResponse: ResponseBody) {
+public class ErrorParser (private val errorResponse: ResponseBody) {
     private val TAG = this::class.simpleName
 
     // parsed response
@@ -16,7 +16,7 @@ class ErrorParser (private val errorResponse: ResponseBody) {
 
     // regular error message
     val message by lazy {
-        parsedResponse.get("message").toString()
+        parsedResponse.get("error").toString()
     }
 
     // validation errors

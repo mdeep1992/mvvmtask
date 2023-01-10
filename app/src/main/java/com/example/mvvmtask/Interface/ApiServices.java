@@ -1,5 +1,6 @@
 package com.example.mvvmtask.Interface;
 
+import com.example.mvvmtask.Model.LoginModel;
 import com.example.mvvmtask.Model.RegisterModel;
 import com.example.mvvmtask.Model.list.ListModel;
 import com.google.gson.JsonObject;
@@ -16,4 +17,6 @@ public interface ApiServices {
     Call<ListModel>doGetLists();
     @POST("api/register")
     Call<RegisterModel>doRegister(@Body JsonObject jsonObject);
+    @POST("api/login")
+    Call<LoginModel>doLogin(@Body JsonObject jsonObject);
 }

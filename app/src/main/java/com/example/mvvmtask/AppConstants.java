@@ -7,4 +7,5 @@ public class AppConstants {
     public static final String LOGIN_SESSION_EMAIL= "email";
     public static final String LOGIN_SESSION_TOKEN = "authToken";
     public static final String SHARED_PREF_NAME = "mvvmtask";
+    public static final String APP_LOGIN = "isAppLogin";
 }
