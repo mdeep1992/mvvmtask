@@ -15,6 +15,14 @@
         android:theme="@style/Theme.MvvmTask"
         tools:targetApi="31">
         <activity
+            android:name=".View.SplashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NoActionBar_blue">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.NoActionBar_blue">
@@ -45,7 +53,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.SplashActivity"
+            android:name=".View.RecyclerActivity"
             android:exported="true"
             android:theme="@style/Theme.NoActionBar_blue">
             <intent-filter>

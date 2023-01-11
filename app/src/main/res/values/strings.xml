@@ -10,4 +10,10 @@
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="confirm_password">confirm password</string>
+    <string name="keep_learning">Keep Learning</string>
+    <string name="Home">Home</string>
+    <string name="Userlist">User LIst</string>
+    <string name="Multiplerecyclerview">Multiple recyclerview</string>
+    <string name="RecyclerViewlist">RecyclerViewlist</string>
+    <string name="item_name">Item Name</string>
 </resources>

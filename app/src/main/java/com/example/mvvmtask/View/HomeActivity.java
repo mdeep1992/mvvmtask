@@ -15,7 +15,7 @@ import com.example.mvvmtask.Utils;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomeActivity extends AppCompatActivity {
-MaterialCardView userlist;
+MaterialCardView userlist,multiple_recycler;
 ImageView logout,back;
 private Context context;
     @SuppressLint("MissingInflatedId")
@@ -26,6 +26,7 @@ private Context context;
         userlist=findViewById(R.id.list_card);
         logout=findViewById(R.id.log_out);
         back=findViewById(R.id.back);
+        multiple_recycler=findViewById(R.id.multiplerecycler);
         userlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +41,14 @@ private Context context;
                 Intent i=new Intent(HomeActivity.this,LoginActivity.class);
                 startActivity(i);
                 finishAffinity();
+            }
+        });
+        multiple_recycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(HomeActivity.this,RecyclerActivity.class);
+                startActivity(i);
+
             }
         });
     }
