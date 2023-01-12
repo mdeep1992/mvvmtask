@@ -12,7 +12,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiServices {
     @GET("api/users?page=2")
@@ -22,7 +22,7 @@ public interface ApiServices {
     @POST("api/login")
     Call<LoginModel>doLogin(@Body JsonObject jsonObject);
     @GET("api/client/master/items/available")
-    Call<CategoryItemListModel>getitems(@Header("Authorization") String token);
+    Call<CategoryItemListModel>getitems(@Header("Authorization") String token, @Query("category_id")int categoryid);
     @GET("api/client/master/category/list")
     Call<CategorylistModel>getcatlist(@Header("Authorization")String token);
 }

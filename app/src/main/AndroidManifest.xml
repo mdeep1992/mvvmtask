@@ -23,7 +23,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.HomeActivity"
+            android:name=".View.RecyclerActivity"
             android:exported="false"
             android:theme="@style/Theme.NoActionBar_blue">
             <meta-data
@@ -53,7 +53,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.RecyclerActivity"
+            android:name=".View.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.NoActionBar_blue">
             <intent-filter>

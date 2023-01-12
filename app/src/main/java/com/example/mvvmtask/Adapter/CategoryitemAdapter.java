@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class CategoryitemAdapter extends RecyclerView.Adapter<CategoryitemAdapter.viewholder> {
     ArrayList<Item> categoryitemlist;
-   Context context;
+    Context context;
 
     public CategoryitemAdapter(ArrayList<Item> categoryitemlist, Context context) {
         this.categoryitemlist = categoryitemlist;
@@ -44,21 +44,20 @@ public class CategoryitemAdapter extends RecyclerView.Adapter<CategoryitemAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CategoryitemAdapter.viewholder holder, int position) {
-         int p=position;
-         holder.itemname.setText(categoryitemlist.get(position).getName());
-
-        byte[] bytes = Base64.decode(String.valueOf(categoryitemlist.get(position).getThumbnail()), Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
-        Glide.with(context).load(decodedByte).into(holder.itemimage);
-
-
-
+        String id = String.valueOf(categoryitemlist.get(position).getCategoryId());
+        holder.itemname.setText(categoryitemlist.get(position).getName());
+        if (categoryitemlist.get(position).getThumbnail() != null) {
+            byte[] bytes = Base64.decode(String.valueOf(categoryitemlist.get(position).getThumbnail()), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            Glide.with(context).load(decodedByte).into(holder.itemimage);
+        } else {
+            Glide.with(context).load(R.drawable.no_pictures).into(holder.itemimage);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return categoryitemlist.size() ;
+        return categoryitemlist.size();
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
@@ -68,9 +67,9 @@ public class CategoryitemAdapter extends RecyclerView.Adapter<CategoryitemAdapte
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
-            itemimage=itemView.findViewById(R.id.img_item);
-            itemname=itemView.findViewById(R.id.txt_itemname);
-            totalcard=itemView.findViewById(R.id.itemlay);
+            itemimage = itemView.findViewById(R.id.img_item);
+            itemname = itemView.findViewById(R.id.txt_itemname);
+            totalcard = itemView.findViewById(R.id.itemlay);
         }
     }
 }

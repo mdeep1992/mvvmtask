@@ -16,4 +16,5 @@
     <string name="Multiplerecyclerview">Multiple recyclerview</string>
     <string name="RecyclerViewlist">RecyclerViewlist</string>
     <string name="item_name">Item Name</string>
+    <string name="Pagination">Pagination</string>
 </resources>

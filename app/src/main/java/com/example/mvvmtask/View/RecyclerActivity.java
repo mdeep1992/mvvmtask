@@ -71,11 +71,12 @@ public class RecyclerActivity extends AppCompatActivity {
                 categorylistrecycler.setLayoutManager(manager[0]);
                 categorylist.clear();
                 categorylist.addAll(category.getCategory());
+                recyclerViewModel.getcategoryitem(0,false);
                 catlistadapter=new CategoryAdapter(getApplicationContext(),categorylist, new CategoryListlistener() {
                     @Override
                     public void Itemclicked(int id) {
 
-                        recyclerViewModel.getcategoryitem(id);
+                        recyclerViewModel.getcategoryitem(id,true);
                     }
                 });
                 categorylistrecycler.setAdapter(catlistadapter);
