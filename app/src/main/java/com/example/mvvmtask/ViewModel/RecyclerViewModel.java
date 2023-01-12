@@ -51,13 +51,13 @@ public void getcategorylist(){
     });
 
 }
-public void getcategoryitem(int id){
+public void getcategoryitem(int categoryid,Boolean status){
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(Utils.base_url)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     ApiServices apiServices =retrofit .create(ApiServices.class);
-    Call<CategoryItemListModel> response=apiServices.getitems(Utils.token);
+    Call<CategoryItemListModel> response=apiServices.getitems(Utils.token,categoryid);
     response.enqueue(new Callback<CategoryItemListModel>() {
         @Override
         public void onResponse(Call<CategoryItemListModel> call, Response<CategoryItemListModel> response) {
