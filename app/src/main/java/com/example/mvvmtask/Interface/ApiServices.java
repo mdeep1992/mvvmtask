@@ -15,8 +15,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiServices {
-    @GET("api/users?page=2")
-    Call<ListModel>doGetLists();
+    @GET("api/users")
+    Call<ListModel>doGetLists(@Query("page") int page);
     @POST("api/register")
     Call<RegisterModel>doRegister(@Body JsonObject jsonObject);
     @POST("api/login")
