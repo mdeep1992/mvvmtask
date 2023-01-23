@@ -3,6 +3,8 @@ package com.example.mvvmtask.Interface;
 import com.example.mvvmtask.Model.CategoryItemList.CategoryItemListModel;
 import com.example.mvvmtask.Model.CategoryList.CategorylistModel;
 import com.example.mvvmtask.Model.LoginModel;
+import com.example.mvvmtask.Model.Quiz.QuizModel;
+import com.example.mvvmtask.Model.Quiz.Result;
 import com.example.mvvmtask.Model.RegisterModel;
 import com.example.mvvmtask.Model.list.ListModel;
 import com.google.gson.JsonObject;
@@ -25,4 +27,7 @@ public interface ApiServices {
     Call<CategoryItemListModel>getitems(@Header("Authorization") String token, @Query("category_id")int categoryid);
     @GET("api/client/master/category/list")
     Call<CategorylistModel>getcatlist(@Header("Authorization")String token);
+    @GET("api.php?amount=25&category=18")
+    Call<Result>getlist();
 }
+//https://opentdb.com/

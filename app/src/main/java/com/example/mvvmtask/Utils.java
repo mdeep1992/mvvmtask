@@ -12,6 +12,8 @@ public class Utils {
     public static final String BASE_URL ="https://reqres.in/";
     public static final String token = "Bearer "+"808|so3xxzb4KtBF6V4L4434twluqNqQZxR4ZY1MS21t";
     public static final String base_url = "https://zeoner.com/calcibill/";
+    public static final String quiz_url = "https://opentdb.com/";
+
    public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 

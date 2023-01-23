@@ -17,4 +17,5 @@
     <string name="RecyclerViewlist">RecyclerViewlist</string>
     <string name="item_name">Item Name</string>
     <string name="Pagination">Pagination</string>
+    <string name="Quiz">Quiz</string>
 </resources>
