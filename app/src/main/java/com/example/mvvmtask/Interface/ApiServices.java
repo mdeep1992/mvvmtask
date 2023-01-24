@@ -28,6 +28,6 @@ public interface ApiServices {
     @GET("api/client/master/category/list")
     Call<CategorylistModel>getcatlist(@Header("Authorization")String token);
     @GET("api.php?amount=25&category=18")
-    Call<Result>getlist();
+    Call<QuizModel>getlist();
 }
 //https://opentdb.com/

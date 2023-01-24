@@ -21,28 +21,29 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuizViewModel extends AndroidViewModel {
-    public MutableLiveData<Result> quizlist=new MutableLiveData<>();
+    public MutableLiveData<QuizModel> quizlist=new MutableLiveData<>();
     public MutableLiveData<String>ErrorMsg =new MutableLiveData<>();
     public QuizViewModel(@NonNull Application application) {
         super(application);
     }
 
     public void loadquestions(){
+        Log.e("callfunction","true");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Utils.quiz_url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiServices apiServices =retrofit .create(ApiServices.class);
-        Call<Result> responsecall = apiServices.getlist();
-        responsecall.enqueue(new Callback<Result>() {
+        Call<QuizModel> responsecall = apiServices.getlist();
+        responsecall.enqueue(new Callback<QuizModel>() {
             @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
+            public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
                 Log.e("quizlist", response.body().toString());
                 quizlist.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Result> call, Throwable t) {
+            public void onFailure(Call<QuizModel> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage() );
             }
         });

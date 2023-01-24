@@ -53,7 +53,6 @@ public class ListActivity extends AppCompatActivity {
         listback = findViewById(R.id.listback);
         progress_page = findViewById(R.id.progress_recycler);
         scrollview = findViewById(R.id.scrollview);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         doInitViewModel();
 
         scrollview.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
@@ -94,50 +93,6 @@ public class ListActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-/*
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-//                        if (newState== AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
-//                            isscrolling=true;
-//                        }
-                isscrolling = true;
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                visibleitem = manager.getChildCount();
-                totalcount = manager.getItemCount();
-                scrolloutitem = manager.findFirstVisibleItemPosition();
-//                Log.e("scroll", "scrolling");
-                if (isscrolling && (visibleitem + scrolloutitem == totalcount)) {
-                    if (!apiLoading) {
-//                    Log.e("scroll", "scrolled");
-                        isscrolling = true;
-//                        if (i<=1){
-//                        progressBar.setVisibility(View.VISIBLE);}else{
-//                            progress_page.setVisibility(View.VISIBLE);
-//                        }
-                        i = i + 1;
-
-                        Log.e("i>>>", String.valueOf(i));
-                        int totalpages = listViewModel.userList.getValue().getTotalPages();
-                        progressBar.setVisibility(View.GONE);
-                        progress_page.setVisibility(View.GONE);
-                        if (i <= totalpages) {
-                            Log.e("condition check i>>", String.valueOf(i));
-                            callAPi(i);
-                        }
-
-                    }
-                }
-
-            }
-        });
-*/
 
     }
 
