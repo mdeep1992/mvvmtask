@@ -2,8 +2,10 @@ package com.example.mvvmtask.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,58 +22,82 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.JsonObject;
 
 public class RegisterActivity extends AppCompatActivity {
-TextInputEditText ed_email,ed_password,ed_confirmpass;
-TextInputLayout tx_email,tx_password,tx_confirmpass;
-AppCompatButton register;
-CheckBox policy;
+    TextInputEditText ed_email, ed_password, ed_confirmpass;
+    TextInputLayout tx_email, tx_password, tx_confirmpass;
+    AppCompatButton register_btn;
+    CheckBox policy;
+    RegisterViewModel registerViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         doInitContent();
-        register.setOnClickListener(new View.OnClickListener() {
+        doInitViewModel();
+        ed_email.setText("eve.holt@reqres.in");
+        register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 doValidation();
             }
         });
 
     }
 
+    private void doInitViewModel() {
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        registerViewModel.register.observe(this, new Observer<RegisterModel>() {
+            @Override
+            public void onChanged(RegisterModel registerModel) {
+                Intent l = new Intent(RegisterActivity.this, LoginActivity.class);
+                l.putExtra("email", ed_email.getText().toString());
+                startActivity(l);
+            }
+        });
+        registerViewModel.ErrorMsg.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(RegisterActivity.this,registerViewModel.ErrorMsg.toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void doValidation() {
-        if (ed_email.getText().toString().isEmpty()){
+        if (ed_email.getText().toString().isEmpty()) {
             tx_email.setHelperText("please enter the email");
-        }else if (!ed_email.getText().toString().trim().matches(Utils.emailPattern)){
+        } else if (!ed_email.getText().toString().trim().matches(Utils.emailPattern)) {
             tx_email.setHelperText("");
             tx_email.setHelperText("invalid email ");
-        }else if((!Utils.isValidPassword(ed_password.getText().toString().trim()))){
+        } else if ((!Utils.isValidPassword(ed_password.getText().toString().trim()))) {
             tx_email.setHelperText("");
             tx_password.setHelperText("password must have six digits and contains atleast one number and one special character");
-        }else if (!ed_confirmpass.getText().toString().equals(ed_password.getText().toString().trim())){
+        } else if (!ed_confirmpass.getText().toString().equals(ed_password.getText().toString())) {
             tx_password.setHelperText("");
             tx_confirmpass.setHelperText("password must be same");
-        }else if (!policy.isChecked()){
+        } else if (!policy.isChecked()) {
             tx_confirmpass.setHelperText("");
-            Toast.makeText(this, "please select the privacy policy", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "please select privacy policy", Toast.LENGTH_SHORT).show();
+        } else {
 
-        }else{
-            RegisterViewModel model = new ViewModelProvider(this).get(RegisterViewModel.class);
-            Log.e("taggggggggg", "response" );
-            JsonObject jsonObject=new JsonObject();
-            jsonObject.addProperty("email",ed_email.getText().toString());
-            jsonObject.addProperty("password",ed_password.getText().toString());
-            model.doregisterApi(jsonObject);
+            Log.e("res>>>", "response");
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("email", ed_email.getText().toString());
+            jsonObject.addProperty("password", ed_password.getText().toString());
+            registerViewModel.doregisterApi(jsonObject);
+
         }
     }
 
     private void doInitContent() {
-        ed_email=findViewById(R.id.etx_email);
-        ed_password=findViewById(R.id.etx_password);
-        ed_confirmpass=findViewById(R.id.etx_confirm_password);
-        tx_email=findViewById(R.id.txt_email);
-        tx_password=findViewById(R.id.txt_password);
-        tx_confirmpass=findViewById(R.id.txt_confirm_password);
-        register=findViewById(R.id.btn_register);
-        policy=findViewById(R.id.privacy);
+        ed_email = findViewById(R.id.etx_email);
+        ed_password = findViewById(R.id.etx_password);
+        ed_confirmpass = findViewById(R.id.etx_confirm_password);
+        tx_email = findViewById(R.id.txt_email);
+        tx_password = findViewById(R.id.txt_password);
+        tx_confirmpass = findViewById(R.id.txt_confirm_password);
+        register_btn = findViewById(R.id.btn_register);
+        policy = findViewById(R.id.privacy);
     }
 }

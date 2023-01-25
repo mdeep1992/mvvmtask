@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewholder> {
     private Context context;
     ArrayList<Datum>list;
-
+    private final int VIEW_ITEM = 1;
+    private final int VIEW_PROG = 0;
     public ListAdapter(Context context, ArrayList<Datum> list) {
         this.context = context;
         this.list = list;
@@ -31,6 +33,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewholder> {
     public ListAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.listrow,parent,false);
         return new viewholder(view);
+
     }
 
     @Override
@@ -65,4 +68,5 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewholder> {
 
         }
     }
+
 }

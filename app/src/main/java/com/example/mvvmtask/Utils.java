@@ -2,6 +2,7 @@ package com.example.mvvmtask;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +10,13 @@ import java.util.regex.Pattern;
 public class Utils {
 
     public static final String BASE_URL ="https://reqres.in/";
+    public static final String token = "Bearer "+"808|so3xxzb4KtBF6V4L4434twluqNqQZxR4ZY1MS21t";
+    public static final String base_url = "https://zeoner.com/calcibill/";
+    public static final String quiz_url = "https://opentdb.com/";
+
    public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+
 
     public void emailpattern(){
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -44,5 +51,14 @@ public class Utils {
         editor.putString(AppConstants.LOGIN_SESSION_EMAIL, email);
         editor.apply();
     }
-
+    public static void  setStringResource(Context context,String key,String value){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstants.SHARED_PREF_NAME,  Context.MODE_PRIVATE); // 0 - for private mode
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+    public static String getStringResource(Context context,String key){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(AppConstants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return  sharedPreferences.getString(key, "");
+    }
 }
