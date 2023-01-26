@@ -18,4 +18,5 @@
     <string name="item_name">Item Name</string>
     <string name="Pagination">Pagination</string>
     <string name="Quiz">Quiz</string>
+    <string name="ok">OK</string>
 </resources>

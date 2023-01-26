@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvvmtask.Interface.Listener;
+import com.example.mvvmtask.Model.Quiz.Model;
 import com.example.mvvmtask.Model.Quiz.Result;
 import com.example.mvvmtask.R;
 
@@ -19,18 +22,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Quiz_Adapter extends RecyclerView.Adapter<Quiz_Adapter.viewholder>implements Listener {
+public class Quiz_Adapter extends RecyclerView.Adapter<Quiz_Adapter.viewholder> {
     Context context;
-    ArrayList<Result> quizlist=new ArrayList<>();
-String seletedans;
-    LinearLayoutManager manager;
-    Quizanans_Adapter adapter;
-   String correctAnswer;
-   int totalcrtanswer=0;
+    ArrayList<Result> quizlist;
+    String correctAnswer;
+    int totalcrtanswer = 0;
+    Listener listener;
 
-    public Quiz_Adapter(Context context, ArrayList<Result> quizlist) {
+    String Selectedtext, Select_text;
+    int lastposition = 0;
+    ArrayList<Model> qlist = new ArrayList<>();
+
+    public Quiz_Adapter(Context context, ArrayList<Result> quizlist, Listener listener) {
         this.context = context;
         this.quizlist = quizlist;
+        this.listener = listener;
     }
 
     @NonNull
@@ -42,24 +48,47 @@ String seletedans;
 
     @Override
     public void onBindViewHolder(@NonNull Quiz_Adapter.viewholder holder, int position) {
+        int p = position;
+        holder.setIsRecyclable(false);
         holder.question.setText(quizlist.get(position).getQuestion());
-        manager = new LinearLayoutManager(context);
-        holder.recycler_ques.setHasFixedSize(true);
-        holder.recycler_ques.setLayoutManager(manager);
-        quizlist.get(position).getIncorrectAnswers().add(quizlist.get(position).getCorrectAnswer());
-        List<String> answers=quizlist.get(position).getIncorrectAnswers();
-        Collections.shuffle(answers);
-        adapter = new Quizanans_Adapter(context, answers,this);
-        holder.recycler_ques.setAdapter(adapter);
-       correctAnswer=quizlist.get(position).getCorrectAnswer();
-//        Log.e("seletedans", seletedans);
-        Log.e("correctAnswer", correctAnswer);
-       if (correctAnswer.equals(seletedans)){
-           totalcrtanswer++;
-           Log.e("totalcrtanswer>>>", String.valueOf(totalcrtanswer));
-       }else{
-           Log.e("totalcrtanswer_status","false");
-       }
+
+
+        List<String> ans = quizlist.get(position).getIncorrectAnswers();
+        ans.add(quizlist.get(position).getCorrectAnswer());
+        Collections.shuffle(ans);
+        int id = 0;
+        for (String answers : ans) {
+            RadioButton radioButton = new RadioButton(context);
+            radioButton.setId(id);
+            id++;
+            radioButton.setText(answers);
+            holder.radiogroup.addView(radioButton);
+        }
+
+        holder.radiogroup.setOnCheckedChangeListener((radioGroup, i) -> {
+//                Log.e("ans", ans.get(i));
+            Selectedtext = ans.get(i);
+            Boolean alreadyselected=false;
+            for(Model selectedData : qlist){
+                Log.e("selectedDataposition", String.valueOf(selectedData.getPosition()));
+                Log.e("position", String.valueOf(position));
+                if(selectedData.getPosition()==position){
+                    alreadyselected=true ;
+                    qlist.get(qlist.indexOf(selectedData)).setSelectedtext(Selectedtext);
+                    Log.e("qlistindex", String.valueOf(qlist.indexOf(selectedData)));
+                    listener.oncheck(qlist, p);
+                }
+            }
+            if(!alreadyselected) {
+                Log.e("no>>>>>>>>>>>", "no:2");
+                qlist.add(new Model(quizlist.get(p).getQuestion(), Selectedtext,p));
+                listener.oncheck(qlist, p);
+            }
+
+            Log.e("listsize", String.valueOf(qlist.size()));
+        });
+
+
     }
 
     @Override
@@ -67,19 +96,16 @@ String seletedans;
         return quizlist.size();
     }
 
-    @Override
-    public void oncheck(int position) {
-        Log.e("checkposition", String.valueOf(quizlist.get(position)));
-      seletedans=(quizlist.get(position).getCorrectAnswer());
-    }
-
     public class viewholder extends RecyclerView.ViewHolder {
         TextView question;
-        RecyclerView recycler_ques;
+
+        RadioGroup radiogroup;
+
+
         public viewholder(@NonNull View itemView) {
             super(itemView);
-            question=itemView.findViewById(R.id.question);
-            recycler_ques=itemView.findViewById(R.id.recycler_question);
+            question = itemView.findViewById(R.id.question);
+            radiogroup = itemView.findViewById(R.id.radiogroup);
         }
     }
 }

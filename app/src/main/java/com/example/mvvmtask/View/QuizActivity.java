@@ -8,15 +8,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mvvmtask.Adapter.Quiz_Adapter;
+import com.example.mvvmtask.Interface.Listener;
+import com.example.mvvmtask.Model.Quiz.Model;
 import com.example.mvvmtask.Model.Quiz.QuizModel;
 import com.example.mvvmtask.Model.Quiz.Result;
 import com.example.mvvmtask.R;
@@ -24,6 +31,7 @@ import com.example.mvvmtask.ViewModel.ListViewModel;
 import com.example.mvvmtask.ViewModel.QuizViewModel;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class QuizActivity extends AppCompatActivity {
     Context context;
@@ -34,6 +42,10 @@ public class QuizActivity extends AppCompatActivity {
     QuizViewModel quizViewModel;
     LinearLayoutManager manager;
     ArrayList<Result> list = new ArrayList<>();
+    int Totalcount;
+    int totalcount=0;
+    String question;
+    ArrayList<Model> selectedanswer = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,14 +59,25 @@ public class QuizActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                doAnswerCheck();
+                Dialog dialog1 = new Dialog(QuizActivity.this);
+                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog1.setContentView(R.layout.dialogue_add);
+                TextView count = dialog1.findViewById(R.id.totalcount);
+                Button okbtn = dialog1.findViewById(R.id.okbtn);
+
+
+                okbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog1.dismiss();
+
+                    }
+                });
+                dialog1.show();
             }
         });
     }
 
-    private void doAnswerCheck() {
-
-    }
 
     private void doInitViewModel() {
         progressBar.setVisibility(View.VISIBLE);
@@ -63,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
         quizViewModel.quizlist.observe(this, new Observer<QuizModel>() {
             @Override
             public void onChanged(QuizModel quizModel) {
-                Log.e("observer", "onChanged: " );
+                Log.e("observer", "onChanged: ");
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setHasFixedSize(true);
                 manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -71,9 +94,18 @@ public class QuizActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(manager);
                 list.clear();
                 list.addAll(quizModel.getResults());
-                adapter = new Quiz_Adapter(context, list);
-                recyclerView.setAdapter(adapter);
 
+                adapter = new Quiz_Adapter(QuizActivity.this, list, new Listener() {
+                    @Override
+                    public void oncheck(ArrayList<Model> qlist, int position) {
+
+                        selectedanswer = qlist;
+
+                    }
+                });
+
+
+                recyclerView.setAdapter(adapter);
             }
         });
         quizViewModel.ErrorMsg.observe(this, new Observer<String>() {
