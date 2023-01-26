@@ -43,9 +43,20 @@ public class QuizActivity extends AppCompatActivity {
     LinearLayoutManager manager;
     ArrayList<Result> list = new ArrayList<>();
     int Totalcount;
-    int totalcount=0;
+    int totalcount = 0;
     String question;
     ArrayList<Model> selectedanswer = new ArrayList<>();
+
+    public Model getAnswer(Result result) {
+        for (Model select : selectedanswer) {
+            if (result.getQuestion().equals(select.getQuestion())) {
+                return select;
+            }
+        }
+        return null;
+    }
+
+    ;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -64,8 +75,20 @@ public class QuizActivity extends AppCompatActivity {
                 dialog1.setContentView(R.layout.dialogue_add);
                 TextView count = dialog1.findViewById(R.id.totalcount);
                 Button okbtn = dialog1.findViewById(R.id.okbtn);
+                int totalcount = 0;
+                for (Result l : list) {
+                    Log.e("correctanswer", l.getCorrectAnswer() );
+                    Model model = getAnswer(l);
+                    if (model != null) {
+                        if (model.getSelectedtext().equals(l.getCorrectAnswer())) {
+                            totalcount = totalcount + 1;
+                        }
+
+                    }
 
 
+                }
+                count.setText(totalcount + "");
                 okbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
