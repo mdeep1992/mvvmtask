@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MvvmTask</string>
+    <string name="register">பதிவு</string>
+    <string name="accept_privacy_policy">தனியுரிமைக் கொள்கை</string>
+    <string name="password">கடவுச்சொல்</string>
+    <string name="phone_number">தொலைபேசி எண்</string>
+    <string name="name">பெயர்</string>
+    <string name="registration">பதிவு</string>
+    <string name="email">மின்னஞ்சல்</string>
+    <string name="login">உள்நுழைய</string>
+    <string name="forgot_password">
+கடவுச்சொல்லை மறந்துவிட்டீர்களா</string>
+    <string name="confirm_password">கடவுச்சொல்லை உறுதிப்படுத்தவும்</string>
+    <string name="keep_learning">கற்றுக் கொண்டே இருங்கள்</string>
+    <string name="Home">முகப்பு</string>
+    <string name="Userlist">பயனர் பட்டியல்</string>
+    <string name="Multiplerecyclerview">பல மறுசுழற்சி பார்வை</string>
+    <string name="RecyclerViewlist">மறுசுழற்சிப் பட்டியல்</string>
+    <string name="item_name">பொருளின் பெயர்</string>
+    <string name="Pagination">பேஜினேஷன்</string>
+    <string name="Quiz">வினாடி வினா</string>
+    <string name="ok">சரி</string>
+    <string name="id">அடையாள எண்:</string>
+    <string name="Email">மின்னஞ்சல்:</string>
+    <string name="first_name">முதல் பெயர்:</string>
+    <string name="last_name">கடைசி பெயர்:</string>
+</resources>

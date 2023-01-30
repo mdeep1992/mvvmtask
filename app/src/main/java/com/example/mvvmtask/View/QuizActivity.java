@@ -15,9 +15,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,15 +45,15 @@ public class QuizActivity extends AppCompatActivity {
     QuizViewModel quizViewModel;
     LinearLayoutManager manager;
     ArrayList<Result> list = new ArrayList<>();
-    int Totalcount;
-    int totalcount = 0;
-    String question;
     ArrayList<Model> selectedanswer = new ArrayList<>();
 
     public Model getAnswer(Result result) {
         for (Model select : selectedanswer) {
+            Log.e("resultQuestion", result.getQuestion() );
+            Log.e("selectQuestion", select.getQuestion());
             if (result.getQuestion().equals(select.getQuestion())) {
                 return select;
+
             }
         }
         return null;
@@ -63,6 +66,7 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        context=this;
         recyclerView = findViewById(R.id.quizrecycler_question);
         submit = findViewById(R.id.btn_submit);
         progressBar = findViewById(R.id.progressBar_quiz);
@@ -72,6 +76,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Dialog dialog1 = new Dialog(QuizActivity.this);
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog1.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
                 dialog1.setContentView(R.layout.dialogue_add);
                 TextView count = dialog1.findViewById(R.id.totalcount);
                 Button okbtn = dialog1.findViewById(R.id.okbtn);
@@ -79,6 +84,7 @@ public class QuizActivity extends AppCompatActivity {
                 for (Result l : list) {
                     Log.e("correctanswer", l.getCorrectAnswer() );
                     Model model = getAnswer(l);
+                    Log.e("model", String.valueOf(model));
                     if (model != null) {
                         if (model.getSelectedtext().equals(l.getCorrectAnswer())) {
                             totalcount = totalcount + 1;
@@ -104,6 +110,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void doInitViewModel() {
         progressBar.setVisibility(View.VISIBLE);
+        submit.setVisibility(View.GONE);
         quizViewModel = new ViewModelProvider(this).get(QuizViewModel.class);
         quizViewModel.loadquestions();
         quizViewModel.quizlist.observe(this, new Observer<QuizModel>() {
@@ -111,6 +118,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onChanged(QuizModel quizModel) {
                 Log.e("observer", "onChanged: ");
                 progressBar.setVisibility(View.GONE);
+                submit.setVisibility(View.VISIBLE);
                 recyclerView.setHasFixedSize(true);
                 manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 recyclerView.setHasFixedSize(true);

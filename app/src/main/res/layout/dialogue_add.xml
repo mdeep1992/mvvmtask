@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight=".8"
+                android:layout_weight=".3"
                 android:text="Total correct answer is :"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"
@@ -34,10 +34,10 @@
                 android:id="@+id/totalcount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.2"
+                android:layout_weight="1.7"
                 android:text="10"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
         </LinearLayout>
 

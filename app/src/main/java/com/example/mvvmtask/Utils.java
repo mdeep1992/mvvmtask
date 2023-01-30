@@ -61,4 +61,14 @@ public class Utils {
         SharedPreferences sharedPreferences= context.getSharedPreferences(AppConstants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return  sharedPreferences.getString(key, "");
     }
+    public static void  setLocale(Context context,String lang){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("language",  Context.MODE_PRIVATE); // 0 - for private mode
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString( "language",lang);
+        editor.apply();
+    }
+    public static String getLocale(Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences("language", Context.MODE_PRIVATE);
+        return  sharedPreferences.getString("language", "");
+    }
 }

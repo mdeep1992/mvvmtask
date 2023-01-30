@@ -19,4 +19,8 @@
     <string name="Pagination">Pagination</string>
     <string name="Quiz">Quiz</string>
     <string name="ok">OK</string>
+    <string name="id">id:</string>
+    <string name="Email">Email:</string>
+    <string name="first_name">first Name:</string>
+    <string name="last_name">Last name:</string>
 </resources>
