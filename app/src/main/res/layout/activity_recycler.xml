@@ -59,11 +59,381 @@
         </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:background="@drawable/border_line"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:id="@+id/calclay"
+                >
+
+                <TextView
+                    android:id="@+id/txt_items_rate_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:gravity="right"
+                    android:textColor="@color/green_new"
+                    android:textSize="@dimen/dimen_18"
+                    android:maxLines="2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_items_rate_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:gravity="left"
+                    android:textColor="@color/red_color"
+                    android:textSize="@dimen/dimen_18"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txt_item_total_amount"
+                android:layout_below="@+id/calclay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_18"
+                android:textStyle="bold" />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/dimen_5"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_weight="1"
+            android:id="@+id/total_item_selection_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:textSize="@dimen/dimen_15">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:id="@+id/selected_item_qty"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:textSize="@dimen/dimen_15" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:id="@+id/selected_item_rate"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:textSize="@dimen/dimen_15" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dimen_5"
+        >
+
+        <Button
+            android:id="@+id/btn_item_save"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:backgroundTint="@color/primary"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:background="@drawable/primary_botton"
+            android:layout_marginEnd="@dimen/dimen_5"
+            android:layout_marginStart="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_item_print"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/print"
+            android:textColor="@color/white"
+            android:background="@drawable/primary_botton"
+            android:backgroundTint="@color/primary"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_item_del"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/del"
+            android:textColor="@color/white"
+            android:background="@drawable/primary_botton"
+            android:backgroundTint="@color/primary"
+            ></Button>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dimen_10"
+        >
+
+        <Button
+            android:id="@+id/btn_cal_one"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/one"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_5"
+            android:textSize="@dimen/dimen_20"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_second"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/two"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_third"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/three"
+            ></Button>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dimen_10"
+        >
+
+        <Button
+            android:id="@+id/btn_cal_four"
+            android:textSize="@dimen/dimen_20"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/four"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_five"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/five"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_six"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/six"
+            ></Button>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dimen_10"
+        >
+
+        <Button
+            android:id="@+id/btn_cal_seven"
+            android:textSize="@dimen/dimen_20"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/seven"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_eight"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/eight"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_nine"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/nine"
+            ></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dimen_10"
+        >
+
+        <Button
+            android:id="@+id/btn_cal_dot"
+            android:textSize="@dimen/dimen_20"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/dot"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_zero"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/zero"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/dimen_5"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_cal_double_zero"
+            android:textSize="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:text="@string/double_zero"
+            ></Button>
+    </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category"
             android:layout_width="match_parent"
@@ -71,7 +441,7 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_item_view"

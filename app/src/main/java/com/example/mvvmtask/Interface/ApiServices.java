@@ -14,6 +14,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServices {
@@ -29,5 +30,14 @@ public interface ApiServices {
     Call<CategorylistModel>getcatlist(@Header("Authorization")String token);
     @GET("api.php?amount=25&category=18")
     Call<QuizModel>getlist();
+//    @POST("api/client/sales/create")
+//    Call<AddItemResponse>SalesCreate_API (@Header("Authorization") String token, @Body JsonObject jsonObject);
+//    @POST("api/client/sales/update")
+//    Call<AddItemResponse>SalesUpdate_API (@Header("Authorization") String token, @Body JsonObject jsonObject);
+//
+//    @GET("api/client/sales/edit/{id}")
+//    Call<SalesDetailModel> SalesEditAPI(
+//            @Header("Authorization") String token,
+//            @Path("id") String id);
 }
 //https://opentdb.com/
